@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile OS Characteristics</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .slide {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        .slide.active {
+            display: flex;
+            opacity: 1;
+        }
+        .progress-bar {
+            height: 4px;
+            background-color: #3b82f6;
+            transition: width 0.3s ease;
+        }
+        .dot {
+            width: 10px;
+            height: 10px;
+            transition: all 0.3s ease;
+        }
+        .dot.active {
+            width: 16px;
+            background-color: #3b82f6;
+        }
+        .slide-content {
+            transform: translateY(20px);
+            transition: transform 0.5s ease;
+        }
+        .slide.active .slide-content {
+            transform: translateY(0);
+        }
+        .os-icon {
+            transition: all 0.3s ease;
+        }
+        .os-icon:hover {
+            transform: scale(1.1);
+        }
+        .comparison-row {
+            transition: all 0.3s ease;
+        }
+        .comparison-row:hover {
+            background-color: #f3f4f6;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+    <div class="max-w-md mx-auto min-h-screen flex flex-col bg-white shadow-lg overflow-hidden">
+        <!-- Header -->
+        <header class="bg-indigo-600 text-white p-4 flex justify-between items-center">
+            <button id="menu-btn" class="text-white focus:outline-none">
+                <i class="fas fa-mobile-alt text-xl"></i>
+            </button>
+            <h1 class="text-xl font-bold">Mobile OS Characteristics</h1>
+            <div class="w-6"></div>
+        </header>
+
+        <!-- Progress bar -->
+        <div class="h-1 bg-gray-200">
+            <div id="progress" class="progress-bar" style="width: 0%"></div>
+        </div>
+
+        <!-- Slides container -->
+        <main class="flex-1 overflow-y-auto p-6">
+            <!-- Slide 1 - Introduction -->
+            <div class="slide active h-full flex flex-col" id="slide1">
+                <div class="slide-content flex-1">
+                    <div class="text-center mb-8">
+                        <div class="w-24 h-24 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-mobile-screen text-indigo-600 text-4xl"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold text-gray-800 mb-2">Mobile Operating Systems</h2>
+                        <p class="text-gray-600">Key characteristics and comparison</p>
+                    </div>
+                    <div class="bg-indigo-50 p-4 rounded-lg mb-6">
+                        <h3 class="font-semibold text-indigo-800 mb-2">Presentation Overview</h3>
+                        <ul class="list-disc list-inside text-gray-700 space-y-1">
+                            <li>Definition of Mobile OS</li>
+                            <li>Main Mobile OS Platforms</li>
+                            <li>Key Characteristics</li>
+                            <li>Security Features</li>
+                            <li>Performance Comparison</li>
+                            <li>Market Share Analysis</li>
+                        </ul>
+                    </div>
+                    <div class="text-center text-sm text-gray-500 mt-auto">
+                        <p>Swipe left to continue</p>
+                        <i class="fas fa-arrow-right mt-2 animate-pulse"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2 - Definition -->
+            <div class="slide h-full flex flex-col" id="slide2">
+                <div class="slide-content flex-1">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4">What is a Mobile OS?</h2>
+                    <div class="bg-white p-4 rounded-lg shadow mb-6">
+                        <p class="text-gray-700 mb-4">
+                            A mobile operating system (OS) is software that allows smartphones, tablets, and other mobile devices to run applications and programs.
+                        </p>
+                        <div class="flex items-center bg-blue-50 p-3 rounded-lg mb-3">
+                            <div class="bg-blue-100 p-2 rounded-full mr-3">
+                                <i class="fas fa-microchip text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Core Functions</h4>
+                                <p class="text-sm text-gray-600">Hardware abstraction, memory management, process scheduling</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center bg-purple-50 p-3 rounded-lg">
+                            <div class="bg-purple-100 p-2 rounded-full mr-3">
+                                <i class="fas fa-user text-purple-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">User Interface</h4>
+                                <p class="text-sm text-gray-600">Touchscreen interaction, gestures, notifications</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <div class="bg-green-50 p-3 rounded-lg text-center">
+                            <i class="fas fa-battery-three-quarters text-green-600 text-2xl mb-2"></i>
+                            <p class="font-semibold">Power Mgmt</p>
+                            <p class="text-xs text-gray-600">Optimized for battery life</p>
+                        </div>
+                        <div class="bg-yellow-50 p-3 rounded-lg text-center">
+                            <i class="fas fa-wifi text-yellow-600 text-2xl mb-2"></i>
+                            <p class="font-semibold">Connectivity</p>
+                            <p class="text-xs text-gray-600">Cellular, WiFi, Bluetooth</p>
+                        </div>
+                        <div class="bg-red-50 p-3 rounded-lg text-center">
+                            <i class="fas fa-shield-alt text-red-600 text-2xl mb-2"></i>
+                            <p class="font-semibold">Security</p>
+                            <p class="text-xs text-gray-600">Sandboxing, encryption</p>
+                        </div>
+                        <div class="bg-blue-50 p-3 rounded-lg text-center">
+                            <i class="fas fa-box-open text-blue-600 text-2xl mb-2"></i>
+                            <p class="font-semibold">App Ecosystem</p>
+                            <p class="text-xs text-gray-600">App stores, APIs</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3 - Main Platforms -->
+            <div class="slide h-full flex flex-col" id="slide3">
+                <div class="slide-content flex-1">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4">Main Mobile OS Platforms</h2>
+                    <div class="flex justify-around mb-8">
+                        <div class="os-icon text-center" data-os="android">
+                            <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                                <i class="fab fa-android text-green-600 text-3xl"></i>
+                            </div>
+                            <span class="font-medium">Android</span>
+                        </div>
+                        <div class="os-icon text-center" data-os="ios">
+                            <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                                <i class="fab fa-apple text-blue-600 text-3xl"></i>
+                            </div>
+                            <span class="font-medium">iOS</span>
+                        </div>
+                        <div class="os-icon text-center" data-os="harmony">
+                            <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                                <i class="fas fa-mobile-screen text-red-600 text-3xl"></i>
+                            </div>
+                            <span class="font-medium">HarmonyOS</span>
+                        </div>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="bg-white p-4 rounded-lg shadow">
+                            <h3 class="font-semibold text-gray-800 mb-2">Android</h3>
+                            <p class="text-sm text-gray-600">
+                                Open-source Linux-based OS developed by Google. Used by multiple manufacturers (Samsung, Xiaomi, etc.).
+                            </p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow">
+                            <h3 class="font-semibold text-gray-800 mb-2">iOS</h3>
+                            <p class="text-sm text-gray-600">
+                                Proprietary OS developed by Apple exclusively for iPhones. Known for tight integration with hardware.
+                            </p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow">
+                            <h3 class="font-semibold text-gray-800 mb-2">HarmonyOS</h3>
+                            <p class="text-sm text-gray-600">
+                                Huawei's distributed OS designed for multiple device types (phones, tablets, IoT).
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 4 - Key Characteristics -->
+            <div class="slide h-full flex flex-col" id="slide4">
+                <div class="slide-content flex-1">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4">Key Characteristics</h2>
+                    <div class="mb-6">
+                        <div class="flex items-start mb-4">
+                            <div class="bg-indigo-100 p-2 rounded-full mr-3 mt-1">
+                                <i class="fas fa-touch-pointer text-indigo-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Touch Interface</h4>
+                                <p class="text-sm text-gray-600">Optimized for finger touch with gestures (swipe, pinch, tap)</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start mb-4">
+                            <div class="bg-green-100 p-2 rounded-full mr-3 mt-1">
+                                <i class="fas fa-battery-full text-green-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Power Efficiency</h4>
+                                <p class="text-sm text-gray-600">Advanced power management for limited battery capacity</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start mb-4">
+                            <div class="bg-blue-100 p-2 rounded-full mr-3 mt-1">
+                                <i class="fas fa-cloud text-blue-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Cloud Integration</h4>
+                                <p class="text-sm text-gray-600">Seamless sync with cloud services for backup and storage</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-purple-100 p-2 rounded-full mr-3 mt-1">
+                                <i class="fas fa-sensor text-purple-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Sensor Support</h4>
+                                <p class="text-sm text-gray-600">Integration with GPS, accelerometer, gyroscope, etc.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4">
+                        <div class="flex">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-lightbulb text-yellow-500"></i>
+                            </div>
+                            <div class="ml-3">
+                                <p class="text-sm text-yellow-700">
+                                    Modern mobile OSes are increasingly adding AI capabilities for personalized experiences.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 5 - Security Features -->
+            <div class="slide h-full flex flex-col" id="slide5">
+                <div class="slide-content flex-1">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4">Security Features</h2>
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <div class="bg-white p-3 rounded-lg shadow text-center">
+                            <div class="bg-red-100 p-3 rounded-full inline-flex mb-2">
+                                <i class="fas fa-fingerprint text-red-600 text-xl"></i>
+                            </div>
+                            <h4 class="font-semibold">Biometrics</h4>
+                            <p class="text-xs text-gray-600">Fingerprint, Face ID, Iris scanning</p>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg shadow text-center">
+                            <div class="bg-blue-100 p-3 rounded-full inline-flex mb-2">
+                                <i class="fas fa-lock text-blue-600 text-xl"></i>
+                            </div>
+                            <h4 class="font-semibold">Encryption</h4>
+                            <p class="text-xs text-gray-600">Data encryption at rest and in transit</p>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg shadow text-center">
+                            <div class="bg-green-100 p-3 rounded-full inline-flex mb-2">
+                                <i class="fas fa-boxes text-green-600 text-xl"></i>
+                            </div>
+                            <h4 class="font-semibold">Sandboxing</h4>
+                            <p class="text-xs text-gray-600">App isolation to prevent system-wide access</p>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg shadow text-center">
+                            <div class="bg-purple-100 p-3 rounded-full inline-flex mb-2">
+                                <i class="fas fa-shield-virus text-purple-600 text-xl"></i>
+                            </div>
+                            <h4 class="font-semibold">Permissions</h4>
+                            <p class="text-xs text-gray-600">Granular app permission controls</p>
+                        </div>
+                    </div>
+                    <div class="bg-white p-4 rounded-lg shadow">
+                        <h3 class="font-semibold text-gray-800 mb-2">Security Comparison</h3>
+                        <table class="w-full text-sm">
+                            <thead>
+                                <tr class="border-b border-gray-200">
+                                    <th class="text-left py-2">Feature</th>
+                                    <th class="text-center py-2">Android</th>
+                                    <th class="text-center py-2">iOS</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="comparison-row border-b border-gray-100">
+                                    <td class="py-2">App Review</td>
+                                    <td class="text-center py-2"><i class="fas fa-check-circle text-green-500"></i></td>
+                                    <td class="text-center py-2"><i class="fas fa-check-circle text-green-500"></i></td>
+                                </tr>
+                                <tr class="comparison-row border-b border-gray-100">
+                                    <td class="py-2">Sandboxing</td>
+                                    <td class="text-center py-2"><i class="fas fa-check-circle text-green-500"></i></td>
+                                    <td class="text-center py-2"><i class="fas fa-check-circle text-green-500"></i></td>
+                                </tr>
+                                <tr class="comparison-row border-b border-gray-100">
+                                    <td class="py-2">Encryption</td>
+                                    <td class="text-center py-2"><i class="fas fa-check-circle text-green-500"></i></td>
+                                    <td class="text-center py-2"><i class="fas fa-check-circle text-green-500"></i></td>
+                                </tr>
+                                <tr class="comparison-row">
+                                    <td class="py-2">Patch Speed</td>
+                                    <td class="text-center py-2"><i class="fas fa-clock text-yellow-500"></i> Varies</td>
+                                    <td class="text-center py-2"><i class="fas fa-bolt text-green-500"></i> Fast</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 6 - Market Share -->
+            <div class="slide h-full flex flex-col" id="slide6">
+                <div class="slide-content flex-1">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4">Market Share (2023)</h2>
+                    <div class="bg-white p-4 rounded-lg shadow mb-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="font-medium">Android</span>
+                            <span class="text-green-600 font-bold">71.4%</span>
+                        </div>
+                        <div class="h-3 bg-gray-200 rounded-full mb-4">
+                            <div class="h-3 bg-green-500 rounded-full" style="width: 71.4%"></div>
+                        </div>
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="font-medium">iOS</span>
+                            <span class="text-blue-600 font-bold">27.8%</span>
+                        </div>
+                        <div class="h-3 bg-gray-200 rounded-full mb-4">
+                            <div class="h-3 bg-blue-500 rounded-full" style="width: 27.8%"></div>
+                        </div>
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="font-medium">Others</span>
+                            <span class="text-gray-600 font-bold">0.8%</span>
+                        </div>
+                        <div class="h-3 bg-gray-200 rounded-full">
+                            <div class="h-3 bg-gray-400 rounded-full" style="width: 0.8%"></div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <div class="bg-white p-3 rounded-lg shadow">
+                            <h4 class="font-semibold text-gray-800 mb-1">Android Strengths</h4>
+                            <ul class="text-xs text-gray-600 list-disc list-inside space-y-1">
+                                <li>Hardware diversity</li>
+                                <li>Price range options</li>
+                                <li>Customization</li>
+                            </ul>
+                        </div>
+                        <div class="bg-white p-3 rounded-lg shadow">
+                            <h4 class="font-semibold text-gray-800 mb-1">iOS Strengths</h4>
+                            <ul class="text-xs text-gray-600 list-disc list-inside space-y-1">
+                                <li>Premium experience</li>
+                                <li>Ecosystem integration</li>
+                                <li>Long-term updates</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 7 - Conclusion -->
+            <div class="slide h-full flex flex-col" id="slide7">
+                <div class="slide-content flex-1 flex flex-col">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-4">Conclusion</h2>
+                    <div class="flex-1 flex flex-col items-center justify-center text-center">
+                        <div class="w-32 h-32 bg-indigo-100 rounded-full flex items-center justify-center mb-6">
+                            <i class="fas fa-star text-indigo-600 text-5xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Key Takeaways</h3>
+                        <div class="bg-white p-4 rounded-lg shadow mb-6 max-w-xs">
+                            <ul class="text-sm text-gray-700 list-disc list-inside space-y-2">
+                                <li>Mobile OSes are optimized for touch, power efficiency and connectivity</li>
+                                <li>Security is a critical differentiator between platforms</li>
+                                <li>The market is dominated by Android and iOS</li>
+                                <li>Choice depends on user priorities and ecosystem</li>
+                            </ul>
+                        </div>
+                        <div class="text-sm text-gray-500 italic">
+                            <p>The mobile OS landscape continues to evolve with new technologies</p>
+                        </div>
+                    </div>
+                    <div class="mt-auto pt-4 border-t border-gray-200 text-center text-sm text-gray-500">
+                        <p>Thank you for your attention!</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Navigation dots -->
+        <div class="flex justify-center space-x-2 p-4">
+            <button class="dot rounded-full bg-gray-300" data-slide="1"></button>
+            <button class="dot rounded-full bg-gray-300" data-slide="2"></button>
+            <button class="dot rounded-full bg-gray-300" data-slide="3"></button>
+            <button class="dot rounded-full bg-gray-300" data-slide="4"></button>
+            <button class="dot rounded-full bg-gray-300" data-slide="5"></button>
+            <button class="dot rounded-full bg-gray-300" data-slide="6"></button>
+            <button class="dot rounded-full bg-gray-300" data-slide="7"></button>
+        </div>
+
+        <!-- Navigation buttons -->
+        <div class="flex justify-between p-4 bg-gray-50 border-t border-gray-200">
+            <button id="prev-btn" class="bg-white hover:bg-gray-100 text-gray-800 font-medium py-2 px-4 border border-gray-300 rounded-lg shadow-sm disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                <i class="fas fa-arrow-left mr-2"></i> Previous
+            </button>
+            <button id="next-btn" class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 border border-transparent rounded-lg shadow-sm">
+                Next <i class="fas fa-arrow-right ml-2"></i>
+            </button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.dot');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const progressBar = document.getElementById('progress');
+            let currentSlide = 0;
+            const totalSlides = slides.length;
+
+            // Initialize first slide
+            updateSlide();
+
+            // Touch events for mobile swipe
+            let touchStartX = 0;
+            let touchEndX = 0;
+            
+            document.querySelector('main').addEventListener('touchstart', e => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, false);
+            
+            document.querySelector('main').addEventListener('touchend', e => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, false);
+            
+            function handleSwipe() {
+                if (touchEndX < touchStartX - 50) {
+                    nextSlide();
+                }
+                if (touchEndX > touchStartX + 50) {
+                    prevSlide();
+                }
+            }
+
+            // Navigation functions
+            function nextSlide() {
+                if (currentSlide < totalSlides - 1) {
+                    currentSlide++;
+                    updateSlide();
+                }
+            }
+
+            function prevSlide() {
+                if (currentSlide > 0) {
+                    currentSlide--;
+                    updateSlide();
+                }
+            }
+
+            function goToSlide(index) {
+                currentSlide = index;
+                updateSlide();
+            }
+
+            function updateSlide() {
+                // Update slides visibility
+                slides.forEach((slide, index) => {
+                    if (index === currentSlide) {
+                        slide.classList.add('active');
+                    } else {
+                        slide.classList.remove('active');
+                    }
+                });
+
+                // Update dots
+                dots.forEach((dot, index) => {
+                    if (index === currentSlide) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+
+                // Update buttons
+                prevBtn.disabled = currentSlide === 0;
+                nextBtn.disabled = currentSlide === totalSlides - 1;
+
+                // Update progress bar
+                const progress = ((currentSlide + 1) / totalSlides) * 100;
+                progressBar.style.width = `${progress}%`;
+            }
+
+            // Event listeners
+            nextBtn.addEventListener('click', nextSlide);
+            prevBtn.addEventListener('click', prevSlide);
+
+            dots.forEach(dot => {
+                dot.addEventListener('click', function() {
+                    const slideIndex = parseInt(this.getAttribute('data-slide')) - 1;
+                    goToSlide(slideIndex);
+                });
+            });
+
+            // Keyboard navigation
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowRight') {
+                    nextSlide();
+                } else if (e.key === 'ArrowLeft') {
+                    prevSlide();
+                }
+            });
+
+            // OS icon hover effects
+            document.querySelectorAll('.os-icon').forEach(icon => {
+                icon.addEventListener('mouseenter', function() {
+                    const os = this.getAttribute('data-os');
+                    const colorMap = {
+                        'android': 'green',
+                        'ios': 'blue',
+                        'harmony': 'red'
+                    };
+                    this.querySelector('div').classList.add(`bg-${colorMap[os]}-200`);
+                    this.querySelector('i').classList.add(`text-${colorMap[os]}-700`);
+                });
+                
+                icon.addEventListener('mouseleave', function() {
+                    const os = this.getAttribute('data-os');
+                    const colorMap = {
+                        'android': 'green',
+                        'ios': 'blue',
+                        'harmony': 'red'
+                    };
+                    this.querySelector('div').classList.remove(`bg-${colorMap[os]}-200`);
+                    this.querySelector('i').classList.remove(`text-${colorMap[os]}-700`);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
